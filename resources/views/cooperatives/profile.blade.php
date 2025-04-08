@@ -1,4 +1,3 @@
-<!-- resources/views/profile/show.blade.php -->
 @extends('layouts.admin')
 
 @section('content')
@@ -16,7 +15,7 @@
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="{{ route('profile.update') }}" method="POST">
+                <form action="{{ route('cooperative.profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
@@ -24,21 +23,36 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        
+                        <!-- Cooperative Info -->
+                        <h5 class="mt-4">Cooperative Information</h5>
+
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}" required>
+                            <label for="registration_number" class="form-label">Registration Number</label>
+                            <input type="text" class="form-control" name="registration_number" value="{{ $cooperative->registration_number ?? '' }}">
                         </div>
+
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" required>
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" name="phone" value="{{ $cooperative->phone ?? '' }}">
                         </div>
+
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" rows="3">{{ $cooperative->description ?? '' }}</textarea>
                         </div>
+
                         <div class="mb-3">
-                            <label for="password_confirmation" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                            <label for="logo" class="form-label">Logo</label>
+                            <input type="file" class="form-control" name="logo">
+                            @if( $cooperative->logo ?? false)
+                                <img src="{{ asset('storage/' . $cooperative->logo) }}" alt="Cooperative Logo" class="img-thumbnail mt-2" style="max-width: 100px;">
+                            @endif
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="established_at" class="form-label">Established At</label>
+                            <input type="date" class="form-control" name="established_at" value="{{ $cooperative->established_at ?? '' }}">
                         </div>
                     </div>
                     <div class="modal-footer">

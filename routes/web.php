@@ -51,7 +51,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:cooperative'])->group(function () {
     Route::get('/cooperative/dashboard', [CooperativeController::class, 'coopDashboard'])->name('cooperative.dashboard');
     Route::get('/cooperative/profile', [CooperativeController::class, 'coopProfile'])->name('cooperative.profile');
-
+    Route::put('/cooperative/profile', [CooperativeController::class, 'updateCoop'])->name('cooperative.profile.update');
     // Farmers Routes
     Route::resource('farmers', FarmerController::class);
 
@@ -69,6 +69,7 @@ Route::middleware(['auth', 'role:cooperative'])->group(function () {
 
     // Cooperatives Routes
     Route::resource('cooperatives', CooperativeController::class);
+
 });
 
 
