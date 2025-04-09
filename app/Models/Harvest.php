@@ -15,5 +15,9 @@ class Harvest extends Model
     {
         return $this->belongsTo(Farmer::class);
     }
+    public function coffeeProducts()
+    {
+        return $this->hasMany(CoffeeProduct::class);
+    }
 }
 

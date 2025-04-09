@@ -75,19 +75,16 @@ class CooperativeController extends Controller
     public function updateCoop(Request $request)
     {
 
-        return redirect()->route('cooperatives.index');
-
         $request->validate([
-            'registration_number' => 'nullable|string|unique',
+            'registration_number' => 'nullable|string',
             'phone' => 'nullable|string',
             'description' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'established_at' => 'nullable|date',
         ]);
-
-        $id = Auth::user()->id;
-
-        $cooperative = Cooperative::where('user_id', $id);
+        
+        $cooperative = Cooperative::where('user_id', Auth::User()->id)->first();
+        
         if (!$cooperative) {
             return redirect()->back()->with('error', 'Cooperative not found.');
         }
@@ -98,12 +95,14 @@ class CooperativeController extends Controller
             $file->move(public_path('images'), $filename);
             $cooperative->logo = $filename;
         }
+        
         $cooperative->registration_number = $request->input('registration_number');
         $cooperative->phone = $request->input('phone');
         $cooperative->description = $request->input('description');
         $cooperative->established_at = $request->input('established_at');
-        $cooperative->save();
+        $cooperative->save(); // or $cooperative->update()
+        
 
-        return redirect()->back()->with('success', 'Profile updated successfully.');
+        return redirect()->route('cooperative.profile')->with('success', 'Profile updated successfully.');
     }
 }

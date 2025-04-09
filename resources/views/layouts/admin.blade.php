@@ -29,22 +29,25 @@
                     <a href="{{ route('dashboard') }}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('farmers.index') }}"><i class="fas fa-users"></i> Farmers</a>
+                    <a href="{{ route('admin.farmers.index') }}"><i class="fas fa-users"></i> Farmers</a>
                 </li>
                 <li>
-                    <a href="{{ route('farms.index') }}"><i class="fas fa-user-plus"></i> Farms</a>
+                    <a href="{{ route('admin.farms.index') }}"><i class="fas fa-user-plus"></i> Farms</a>
                 </li>
                 <li>
-                    <a href="{{ route('harvests.index') }}"><i class="fas fa-leaf"></i> Harvests</a>
+                    <a href="{{ route('admin.harvests.index') }}"><i class="fas fa-leaf"></i> Harvests</a>
                 </li>
                 <li>
-                    <a href="{{ route('cooperatives.index') }}"><i class="fas fa-users-cog"></i> Cooperatives</a>
+                    <a href="{{ route('admin.cooperatives.index') }}"><i class="fas fa-users-cog"></i> Cooperatives</a>
                 </li>
                 <li>
-                    <a href="{{ route('transactions.index') }}"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                    <a href="{{ route('admin.orders.index') }}"><i class="fas fa-coffee"></i> Coffee Orders</a>
                 </li>
                 <li>
-                    <a href="{{ route('payments.index') }}"><i class="fas fa-credit-card"></i> Payments</a>
+                    <a href="{{ route('admin.transactions.index') }}"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.payments.index') }}"><i class="fas fa-credit-card"></i> Payments</a>
                 </li>
                 @endif
 
@@ -61,8 +64,10 @@
                     <a href="{{ route('cooperative.profile') }}"><i class="fas fa-id-card"></i> Coop Profile</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-users"></i> Members</a>
+                    <a href="{{ route('cooperative.members.index') }}"><i class="fas fa-users"></i> Members</a>
                 </li>
+                <li>
+                    <a href="{{ route('cooperatives.coffee.orders') }}"><i class="fas fa-shopping-cart"></i>Coffee Orders</a>
                 <li>
                     <a href="#"><i class="fas fa-money-check-alt"></i> Coop Transactions</a>
                 </li>

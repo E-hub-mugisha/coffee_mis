@@ -3,13 +3,33 @@
 @section('content')
 <div class="container">
     <h2>Account Profile</h2>
-    <div class="card">
+
+    {{-- User Profile --}}
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">User Information</div>
         <div class="card-body">
             <p><strong>Name:</strong> {{ Auth::user()->name }}</p>
             <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</a>
         </div>
     </div>
+
+    {{-- Cooperative Profile --}}
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">Cooperative Information</div>
+        <div class="card-body">
+            <p><strong>Registration Number:</strong> {{ $cooperative->registration_number ?? 'N/A' }}</p>
+            <p><strong>Phone:</strong> {{ $cooperative->phone ?? 'N/A' }}</p>
+            <p><strong>Description:</strong> {{ $cooperative->description ?? 'N/A' }}</p>
+            <p><strong>Established At:</strong> {{ $cooperative->established_at ? \Carbon\Carbon::parse($cooperative->established_at)->format('F d, Y') : 'N/A' }}</p>
+            @if($cooperative->logo)
+                <p><strong>Logo:</strong><br>
+                    <img src="{{ asset('storage/' . $cooperative->logo) }}" alt="Logo" class="img-thumbnail" style="max-width: 120px;">
+                </p>
+            @endif
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</a>
 
     <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -23,9 +43,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        
                         <!-- Cooperative Info -->
-                        <h5 class="mt-4">Cooperative Information</h5>
+                        <h5 class="mb-3">Cooperative Information</h5>
 
                         <div class="mb-3">
                             <label for="registration_number" class="form-label">Registration Number</label>
@@ -45,7 +64,7 @@
                         <div class="mb-3">
                             <label for="logo" class="form-label">Logo</label>
                             <input type="file" class="form-control" name="logo">
-                            @if( $cooperative->logo ?? false)
+                            @if($cooperative->logo ?? false)
                                 <img src="{{ asset('storage/' . $cooperative->logo) }}" alt="Cooperative Logo" class="img-thumbnail mt-2" style="max-width: 100px;">
                             @endif
                         </div>

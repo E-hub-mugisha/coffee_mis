@@ -9,7 +9,7 @@ class Cooperative extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address'];
+    protected $fillable = ['name', 'address', 'user_id', 'registration_number', 'phone', 'description', 'logo', 'established_at', 'status'];
 
     public function farmers()
     {
@@ -23,5 +23,9 @@ class Cooperative extends Model
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+    public function members()
+    {
+        return $this->hasMany(Member::class);
     }
 }
