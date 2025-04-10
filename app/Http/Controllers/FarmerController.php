@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Farmer;
 use App\Models\Cooperative;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class FarmerController extends Controller
@@ -11,7 +12,8 @@ class FarmerController extends Controller
     public function index()
     {
         $cooperatives = Cooperative::all();
-        return view('admin.farmers.index', ['farmers' => Farmer::all(), 'cooperatives' => $cooperatives]);
+        $members = Member::all();
+        return view('admin.farmers.index', ['farmers' => Farmer::all(), 'cooperatives' => $cooperatives, 'members' => $members]);
     }
 
     public function create()
@@ -22,11 +24,9 @@ class FarmerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:farmers',
             'cooperative_id' => 'required|exists:cooperatives,id',
-            'phone' => 'required|string|max:15',
-            'address' => 'required|string|max:255',
+            'member_id' => 'required|exists:members,id',
+            'name' => 'required|string|max:255',
         ]);
 
         Farmer::create($request->all());
@@ -47,10 +47,8 @@ class FarmerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:farmers,email,' . $farmer->id,
             'cooperative_id' => 'required|exists:cooperatives,id',
-            'phone' => 'required|string|max:15',
-            'address' => 'required|string|max:255',
+            'member_id' => 'required|exists:members,id',
         ]);
 
         $farmer->update($request->all());

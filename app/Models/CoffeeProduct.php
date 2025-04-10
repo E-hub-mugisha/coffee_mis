@@ -15,6 +15,7 @@ class CoffeeProduct extends Model
         'description',
         'quantity',
         'harvest_id',
+        'cooperative_id',
     ];
     public function harvest()
     {
@@ -23,5 +24,9 @@ class CoffeeProduct extends Model
     public function orderItems()
     {
         return $this->hasMany(CoffeeOrderItem::class);
+    }
+    public function cooperative()
+    {
+        return $this->belongsTo(Cooperative::class);
     }
 }

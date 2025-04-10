@@ -48,7 +48,7 @@ class MemberController extends Controller
 
         $member->save();
 
-        return redirect()->route('members.index')->with('success', 'Member added successfully.');
+        return redirect()->back()->with('success', 'Member added successfully.');
     }
 
     public function show(Member $member)
@@ -83,13 +83,13 @@ class MemberController extends Controller
 
         $member->save();
 
-        return redirect()->route('members.index')->with('success', 'Member updated successfully.');
+        return redirect()->back()->with('success', 'Member updated successfully.');
     }
 
     public function destroy(Member $member)
     {
         $member->delete();
-        return redirect()->route('members.index')->with('success', 'Member deleted.');
+        return redirect()->back()->with('success', 'Member deleted.');
     }
 }
 

@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th>Farm Name</th>
+                <th>cooperative</th>
                 <th>Farmer name</th>
                 <th>Location</th>
                 <th>size_in_hectares</th>
@@ -20,6 +21,7 @@
             @foreach($farms as $farm)
             <tr id="farm-{{ $farm->id }}">
                 <td>{{ $farm->name }}</td>
+                <td>{{ $farm->cooperative->name }}</td>
                 <td>{{ $farm->farmer->name }}</td>
                 <td>{{ $farm->location }}</td>
                 <td>{{ $farm->size_in_hectares }} acres</td>
@@ -49,6 +51,7 @@
                         </div>
                         <div class="modal-body">
                             <p><strong>Farm Name:</strong> {{ $farm->name }}</p>
+                            <p><strong>Cooperative:</strong> {{ $farm->cooperative->name }}</p>
                             <p><strong>Farmer Name:</strong> {{ $farm->farmer->name }}</p>
                             <p><strong>Location:</strong> {{ $farm->location }}</p>
                             <p><strong>size_in_hectares:</strong> {{ $farm->size_in_hectares }} acres</p>
@@ -74,10 +77,18 @@
                                     <input type="text" class="form-control" id="name" name="name" value="{{ $farm->name }}" required>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="cooperative_id" class="form-label">cooperative</label>
+                                    <select class="form-select" id="cooperative_id" name="cooperative_id" required>
+                                        @foreach($cooperatives as $cooperative)
+                                        <option value="{{ $cooperative->id }}" {{ $farm->cooperative_id == $cooperative->id ? 'selected' : '' }}>{{ $cooperative->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label for="farmer_id" class="form-label">Farmer</label>
                                     <select class="form-select" id="farmer_id" name="farmer_id" required>
                                         @foreach($farmers as $farmer)
-                                            <option value="{{ $farmer->id }}" {{ $farm->farmer_id == $farmer->id ? 'selected' : '' }}>{{ $farmer->name }}</option>
+                                        <option value="{{ $farmer->id }}" {{ $farm->farmer_id == $farmer->id ? 'selected' : '' }}>{{ $farmer->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -119,10 +130,18 @@
                         <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
+                        <label for="cooperative_id" class="form-label">cooperative</label>
+                        <select class="form-select" id="cooperative_id" name="cooperative_id" required>
+                            @foreach($cooperatives as $cooperative)
+                            <option value="{{ $cooperative->id }}">{{ $cooperative->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="farmer_id" class="form-label">Farmer</label>
                         <select class="form-select" id="farmer_id" name="farmer_id" required>
                             @foreach($farmers as $farmer)
-                                <option value="{{ $farmer->id }}">{{ $farmer->name }}</option>
+                            <option value="{{ $farmer->id }}">{{ $farmer->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -152,7 +171,9 @@
 <script>
     $(document).ready(function() {
         $('#farmsTable').DataTable({
-            "order": [[ 0, "asc" ]]
+            "order": [
+                [0, "asc"]
+            ]
         });
     });
 </script>

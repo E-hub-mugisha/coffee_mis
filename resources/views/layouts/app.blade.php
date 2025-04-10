@@ -79,66 +79,6 @@
     </div>
     <!-- search-popup -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="productQuickView" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="shop-detail">
-                        <div class="detail-wrapper">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="quick-image-box">
-                                        <img src="assets/media/images/product-quickview.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="product-text-container bg-light-black br-20">
-                                        <div class="close-content text-end">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"><i
-                                                    class="fa-light fa-xmark color-white"></i></button>
-                                        </div>
-                                        <h5 class="color-white fw-600 mb-16">ESPRESSO MACCHIATO</h5>
-                                        <div class="d-flex align-items-center flex-wrap gap-16 mb-24">
-                                            <h6 class="color-sec">★&nbsp;★&nbsp;★&nbsp;★&nbsp;★</h6>
-                                            <div class="vr-line vr-line-2"></div>
-                                        </div>
-                                        <div class="d-flex align-items-center gap-16 mb-24">
-                                            <h6 class="color-sec">$30.00</h6>
-                                            <p class="color-white text-decoration-line-through fw-300">$50.00</p>
-                                        </div>
-                                        <p class="color-white mb-24">
-                                            Lorem ipsum dolor sit amet consectetur. Purus nulla nec in ac malesuada et
-                                            nisi
-                                            ipsum. Massa scelerisque...
-                                        </p>
-                                        <div class="hr-line mb-24"></div>
-                                        <div class="function-bar mb-16">
-                                            <div class="quantity quantity-wrap mb-24">
-                                                <div class="input-area quantity-wrap">
-                                                    <input class="decrement" type="button" value="-">
-                                                    <input type="text" name="quantity" value="1" maxlength="2" size="1"
-                                                        class="number">
-                                                    <input class="increment" type="button" value="+">
-                                                </div>
-                                            </div>
-                                            <div class="cart-btn d-flex">
-                                                <a href="checkout.html" class="cus-btn primary">
-                                                    <span class="text">ADD TO CART</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
 
     <!-- Jquery Js -->
     <script src="{{ asset('front-pages/assets/js/vendor/bootstrap.min.js') }}"></script>

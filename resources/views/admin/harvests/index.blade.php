@@ -9,7 +9,11 @@
     <table class="table table-bordered mt-3" id="harvestsTable">
         <thead>
             <tr>
+                <th>Cooperative</th>
+                <th>Farm</th>
                 <th>Farmer</th>
+                <th>Harvest Name</th>
+                <th>Harvest Type</th>
                 <th>Quantity</th>
                 <th>Coffee Grade</th>
                 <th>Harvest Date</th>
@@ -19,7 +23,11 @@
         <tbody>
             @foreach($harvests as $harvest)
             <tr id="harvest-{{ $harvest->id }}">
+                <td>{{ $harvest->cooperative->name }}</td>
+                <td>{{ $harvest->farm->name }}</td>
                 <td>{{ $harvest->farmer->name }}</td>
+                <td>{{ $harvest->harvest_name }}</td>
+                <td>{{ $harvest->harvest_type }}</td>
                 <td>{{ $harvest->quantity }}</td>
                 <td>{{ $harvest->coffee_grade }}</td>
                 <td>{{ $harvest->harvest_date }}</td>
@@ -48,7 +56,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                            <p><strong>Cooperative:</strong> {{ $harvest->cooperative->name }}</p>
+                            <p><strong>Farm:</strong> {{ $harvest->farm->name }}</p>
                             <p><strong>Farmer:</strong> {{ $harvest->farmer->name }}</p>
+                            <p><strong>Harvest Name:</strong> {{ $harvest->harvest_name }}</p>
+                            <p><strong>Harvest Type:</strong> {{ $harvest->harvest_type }}</p>
                             <p><strong>quantity:</strong> {{ $harvest->quantity }}</p>
                             <p><strong>Coffee Grade:</strong> {{ $harvest->coffee_grade }}</p>
                             <p><strong>Harvest Date:</strong> {{ $harvest->harvest_date }}</p>
@@ -70,12 +82,36 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
+                                    <label for="cooperative_id" class="form-label">cooperative</label>
+                                    <select class="form-control" id="cooperative_id" name="cooperative_id" required>
+                                        @foreach($cooperatives as $cooperative)
+                                        <option value="{{ $cooperative->id }}" {{ $cooperative->id == $harvest->cooperative_id ? 'selected' : '' }}>{{ $cooperative->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="farm_id" class="form-label">Farm</label>
+                                    <select class="form-control" id="farm_id" name="farm_id" required>
+                                        @foreach($farms as $farm)
+                                        <option value="{{ $farm->id }}" {{ $farm->id == $harvest->farm_id ? 'selected' : '' }}>{{ $farm->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label for="farmer_id" class="form-label">Farmer</label>
                                     <select class="form-control" id="farmer_id" name="farmer_id" required>
                                         @foreach($farmers as $farmer)
                                         <option value="{{ $farmer->id }}" {{ $farmer->id == $harvest->farmer_id ? 'selected' : '' }}>{{ $farmer->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Harvest Name</label>
+                                    <input type="text" class="form-control" id="harvest_name" name="harvest_name" value="{{ $harvest->harvest_name }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="type" class="form-label">Harvest Type</label>
+                                    <input type="text" class="form-control" id="harvest_type" name="harvest_type" value="{{ $harvest->harvest_type }}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="quantity" class="form-label">quantity</label>
@@ -115,12 +151,36 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
+                        <label for="cooperative_id" class="form-label">cooperative</label>
+                        <select class="form-control" id="cooperative_id" name="cooperative_id" required>
+                            @foreach($cooperatives as $cooperative)
+                            <option value="{{ $cooperative->id }}">{{ $cooperative->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="farm_id" class="form-label">Farm</label>
+                        <select class="form-control" id="farm_id" name="farm_id" required>
+                            @foreach($farms as $farm)
+                            <option value="{{ $farm->id }}">{{ $farm->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="farmer_id" class="form-label">Farmer</label>
                         <select class="form-control" id="farmer_id" name="farmer_id" required>
                             @foreach($farmers as $farmer)
                             <option value="{{ $farmer->id }}">{{ $farmer->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Harvest Name</label>
+                        <input type="text" class="form-control" id="harvest_name" name="harvest_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Harvest Type</label>
+                        <input type="text" class="form-control" id="harvest_type" name="harvest_type" required>
                     </div>
                     <div class="mb-3">
                         <label for="quantity" class="form-label">quantity</label>

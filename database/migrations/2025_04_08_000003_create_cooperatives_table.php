@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('cooperatives', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->text('address');
+            $table->string('registration_number')->unique()->nullable();
+            $table->string('phone')->nullable();
+            $table->text('description')->nullable();
+            $table->string('logo')->nullable();
+            $table->date('established_at')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

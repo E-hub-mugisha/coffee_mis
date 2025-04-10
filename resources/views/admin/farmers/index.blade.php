@@ -15,9 +15,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
+                            <th>member id</th>
                             <th>Cooperative</th>
                             <th>Actions</th>
                         </tr>
@@ -26,9 +24,7 @@
                         @foreach($farmers as $farmer)
                         <tr id="farmer-{{ $farmer->id }}">
                             <td>{{ $farmer->name }}</td>
-                            <td>{{ $farmer->email }}</td>
-                            <td>{{ $farmer->phone }}</td>
-                            <td>{{ $farmer->address }}</td>
+                            <td>{{ $farmer->member_id }}</td>
                             <td>{{ $farmer->cooperative ? $farmer->cooperative->name : 'N/A' }}</td>
                             <td>
                                 <!-- Show Farmer Modal Trigger -->
@@ -56,9 +52,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <p><strong>Name:</strong> {{ $farmer->name }}</p>
-                                        <p><strong>Email:</strong> {{ $farmer->email }}</p>
-                                        <p><strong>Phone:</strong> {{ $farmer->phone }}</p>
-                                        <p><strong>Address:</strong> {{ $farmer->address }}</p>
+                                        <p><strong>Member ID:</strong> {{ $farmer->member_id }}</p>
                                         <p><strong>Cooperative:</strong> {{ $farmer->cooperative ? $farmer->cooperative->name : 'N/A' }}</p>
                                         <p><strong>Created At:</strong> {{ $farmer->created_at->format('d-m-Y H:i') }}</p>
                                     </div>
@@ -83,23 +77,20 @@
                                                 <input type="text" class="form-control" id="name" name="name" value="{{ $farmer->name }}" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" value="{{ $farmer->email }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="phone" class="form-label">Phone</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $farmer->phone }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="address" class="form-label">Address</label>
-                                                <input type="text" class="form-control" id="address" name="address" value="{{ $farmer->address }}" required>
-                                            </div>
-                                            <div class="mb-3">
                                                 <label for="cooperative_id" class="form-label">Cooperative</label>
                                                 <select class="form-select" id="cooperative_id" name="cooperative_id">
                                                     <option value="">Select Cooperative</option>
                                                     @foreach($cooperatives as $cooperative)
                                                     <option value="{{ $cooperative->id }}" {{ $farmer->cooperative_id == $cooperative->id ? 'selected' : '' }}>{{ $cooperative->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="member_id" class="form-label">member</label>
+                                                <select class="form-select" id="member_id" name="member_id">
+                                                    <option value="">Select member</option>
+                                                    @foreach($members as $member)
+                                                    <option value="{{ $member->id }}" {{ $farmer->member_id == $member->id ? 'selected' : '' }}>{{ $member->full_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -133,23 +124,20 @@
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address" required>
-                                </div>
-                                <div class="mb-3">
                                     <label for="cooperative_id" class="form-label">Cooperative</label>
                                     <select class="form-select" id="cooperative_id" name="cooperative_id">
                                         <option value="">Select Cooperative</option>
                                         @foreach($cooperatives as $cooperative)
                                         <option value="{{ $cooperative->id }}">{{ $cooperative->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="member_id" class="form-label">member</label>
+                                    <select class="form-select" id="member_id" name="member_id">
+                                        <option value="">Select member</option>
+                                        @foreach($members as $member)
+                                        <option value="{{ $member->id }}">{{ $member->full_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

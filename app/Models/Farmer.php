@@ -9,26 +9,16 @@ class Farmer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'phone', 'address', 'cooperative_id'];
+    protected $fillable = ['name', 'cooperative_id', 'member_id'];
 
     public function cooperative()
     {
         return $this->belongsTo(Cooperative::class);
     }
-
-    public function harvests()
+    public function member()
     {
-        return $this->hasMany(Harvest::class);
+        return $this->belongsTo(Member::class);
     }
 
-    public function farms()
-    {
-        return $this->hasMany(Farm::class);
-    }
-
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class);
-    }
 }
 

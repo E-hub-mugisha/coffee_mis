@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cooperative;
+use App\Models\Farm;
 use App\Models\Harvest;
 use App\Models\Farmer;
 use Illuminate\Http\Request;
@@ -11,8 +13,10 @@ class HarvestController extends Controller
     public function index()
     {
         $farmers = Farmer::all();
+        $cooperatives = Cooperative::all();
+        $farms = Farm::all();
         $harvests = Harvest::with('farmer')->get();
-        return view('admin.harvests.index', compact('harvests', 'farmers'));
+        return view('admin.harvests.index', compact('harvests', 'farmers', 'cooperatives', 'farms'));
     }
 
     public function create()
@@ -23,6 +27,10 @@ class HarvestController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'cooperative_id' => 'required|exists:cooperatives,id',
+            'farm_id' => 'required|exists:farmers,id',
+            'harvest_name' => 'required|string|max:255',
+            'harvest_type' => 'required|string|max:255',
             'farmer_id' => 'required|exists:farmers,id',
             'harvest_date' => 'required|date',
             'coffee_grade' => 'nullable|string',
@@ -46,6 +54,11 @@ class HarvestController extends Controller
     public function update(Request $request, Harvest $harvest)
     {
         $request->validate([
+            'cooperative_id' => 'required|exists:cooperatives,id',
+            'farm_id' => 'required|exists:farmers,id',
+            'harvest_name' => 'required|string|max:255',
+            'harvest_type' => 'required|string|max:255',
+            'farmer_id' => 'required|exists:farmers,id',
             'harvest_date' => 'required|date',
             'coffee_grade' => 'nullable|string',
             'quantity' => 'required|numeric',

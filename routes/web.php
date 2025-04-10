@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\CoffeeProductController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\HarvestController;
 use App\Http\Controllers\FarmController;
@@ -16,8 +17,8 @@ use App\Http\Controllers\PurchaseOrderController;
 use App\Models\CoffeeOrder;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/coffee-products', [HomeController::class, 'coffeeProduct'])->name('coffee.products');
-Route::get('/coffee-products/{id}', [HomeController::class, 'showCoffeeProduct'])->name('coffee.product.show');
+Route::get('/coffee_products', [HomeController::class, 'coffeeProduct'])->name('coffee.products');
+Route::get('/coffee_products/{id}', [HomeController::class, 'showCoffeeProduct'])->name('coffee.product.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [HomeController::class, 'showCart'])->name('cart.show');
@@ -115,6 +116,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/orders/{order}', [PurchaseOrderController::class, 'showOrder'])->name('admin.orders.show');
     Route::post('/admin/orders/{order}/status', [PurchaseOrderController::class, 'updateStatusOrder'])->name('admin.orders.updateStatus');
     Route::get('/admin/orders/{order}/invoice', [PurchaseOrderController::class, 'generateInvoice'])->name('admin.orders.invoice');
+    Route::get('/invoice/download/{orderId}', [PurchaseOrderController::class, 'downloadInvoice'])->name('invoice.download');
 });
 
 Route::middleware(['auth', 'role:cooperative'])->group(function () {
@@ -136,6 +138,7 @@ Route::middleware(['auth', 'role:cooperative'])->group(function () {
     Route::get('/cooperatives/coffe_orders', [PurchaseOrderController::class, 'indexOrderCooperatives'])->name('cooperatives.coffee.orders');
     Route::get('/cooperatives/orders/{order}', [PurchaseOrderController::class, 'showOrderCooperative'])->name('cooperatives.orders.show');
     Route::post('/cooperatives/orders/{order}/status', [PurchaseOrderController::class, 'updateStatusOrder'])->name('cooperatives.orders.updateStatus');
+    Route::get('/invoice/download/{orderId}', [PurchaseOrderController::class, 'downloadInvoice'])->name('invoice.download');
     // Farmers Routes
     Route::resource('farmers', FarmerController::class);
 
@@ -153,6 +156,9 @@ Route::middleware(['auth', 'role:cooperative'])->group(function () {
 
     // Cooperatives Routes
     Route::resource('cooperatives', CooperativeController::class);
+
+    // Coffee Products Routes
+    Route::resource('/coffee-products', CoffeeProductController::class);
 });
 
 

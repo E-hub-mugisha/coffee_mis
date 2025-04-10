@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cooperative;
 use App\Models\Farm;
 use App\Models\Farmer;
 use Illuminate\Http\Request;
@@ -10,8 +11,9 @@ class FarmController extends Controller
 {
     public function index()
     {
+        $cooperatives = Cooperative::all();
         $farmers = Farmer::all();
-        return view('admin.farms.index', ['farms' => Farm::all()] + ['farmers' => $farmers]);
+        return view('admin.farms.index', ['farms' => Farm::all()] + ['farmers' => $farmers, 'cooperatives' => $cooperatives]);
     }
 
     public function create()
@@ -23,6 +25,7 @@ class FarmController extends Controller
     {
         $request->validate([
             'farmer_id' => 'required|exists:farmers,id',
+            'cooperative_id' => 'required|exists:cooperatives,id',
             'name' => 'required|string|max:255',
             'size_in_hectares' => 'required|numeric',
             'location' => 'required|string',
@@ -46,6 +49,8 @@ class FarmController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'cooperative_id' => 'required|exists:cooperatives,id',
+            'farmer_id' => 'required|exists:farmers,id',
             'size_in_hectares' => 'required|numeric',
             'location' => 'required|string',
         ]);

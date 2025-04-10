@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CoffeeOrder;
 use App\Models\Harvest;
 use App\Models\PurchaseOrder;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,7 @@ class PurchaseOrderController extends Controller
     public function indexOrderCooperatives()
     {
         // Fetch orders for the admin, you can modify this query to filter orders based on some criteria
-        $orders = CoffeeOrder::with('orderItems.coffeeProduct')->latest()->get();
+        $orders = CoffeeOrder::all();
 
         // Pass the orders to the admin view
         return view('cooperatives.orders_index', compact('orders'));
@@ -58,5 +59,17 @@ class PurchaseOrderController extends Controller
         ]);
 
         return redirect()->route('purchase_orders.index')->with('success', 'Order placed successfully.');
+    }
+    public function downloadInvoice($orderId)
+    {
+        $order = CoffeeOrder::with('orderItems.coffeeProduct')->findOrFail($orderId);
+
+        $pdf = Pdf::loadView('pdf.order-invoice', compact('order'));
+
+        // Download the invoice
+        $pdf->download('invoice_order_' . $order->id . '.pdf');
+
+        // Redirect to home page after download
+        return redirect()->back()->with('success', 'Invoice downloaded successfully!');
     }
 }

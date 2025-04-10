@@ -4,7 +4,7 @@
         <div class="row align-items-start row-gap-4 mb-40">
             <div class="col-xl-4">
                 <div class="footer-logo">
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         <img class="mb-16" src="{{ asset('front-pages/assets/media/footer-logo.png') }}" alt="">
                     </a>
 
@@ -18,26 +18,17 @@
                     <div>
                         <h5 class="fw-700 dark-gray mb-24">Privacy</h5>
                         <ul>
-                            <li class="text-16 mb-12"> <a href="blo.html">Terms of use</a></li>
-                            <li class="text-16 mb-12"><a href="#">Privacy Policy</a></li>
-                            <li class="text-16 mb-0"> <a href="#">Cookies</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 class="fw-700 dark-gray mb-24">Services</h5>
-                        <ul>
-                            <li class="text-16 mb-12"> <a href="shop.html">Shop</a></li>
-                            <li class="text-16 mb-12"><a href="product-detail.html">Order Ahead</a></li>
-                            <li class="text-16 mb-0"> <a href="menu.html">Menu</a></li>
+                            <li class="text-16 mb-12"> <a href="{{ route('home') }}">Terms of use</a></li>
+                            <li class="text-16 mb-12"><a href="{{ route('home') }}">Privacy Policy</a></li>
+                            <li class="text-16 mb-0"> <a href="{{ route('home') }}">Cookies</a></li>
                         </ul>
                     </div>
                     <div>
                         <h5 class="fw-700 dark-gray mb-24">About Us</h5>
                         <ul>
-                            <li class="text-16 mb-12"> <a href="contact.html">Find a Location</a></li>
-                            <li class="text-16 mb-12"><a href="about.html">About Us</a></li>
-                            <li class="text-16 mb-12"><a href="about.html">Our Story</a></li>
-                            <li class="text-16 mb-0"> <a href="account.html">Login</a></li>
+                            <li class="text-16 mb-12"> <a href="{{ route('home') }}">Find a Location</a></li>
+                            <li class="text-16 mb-12"><a href="{{ route('home') }}">About Us</a></li>
+                            <li class="text-16 mb-0"> <a href="{{ route('login') }}">Login</a></li>
                         </ul>
                     </div>
                     <div>

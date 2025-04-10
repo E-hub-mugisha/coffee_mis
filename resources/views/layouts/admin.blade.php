@@ -20,7 +20,7 @@
         <!-- Sidebar -->
         <nav id="sidebar" class="active">
             <div class="sidebar-header">
-                <img src="{{ asset('assets/img/bootstraper-logo.png') }}" alt="bootraper logo" class="app-logo">
+                <h2 class="app-logo">Coffee MIS</h2>
             </div>
             <ul class="list-unstyled components text-secondary">
 
@@ -64,8 +64,20 @@
                     <a href="{{ route('cooperative.profile') }}"><i class="fas fa-id-card"></i> Coop Profile</a>
                 </li>
                 <li>
-                    <a href="{{ route('cooperative.members.index') }}"><i class="fas fa-users"></i> Members</a>
+                    <a href="{{ route('cooperative.members.index') }}"><i class="fas fa-users"></i>Coop Members</a>
                 </li>
+                <li>
+                    <a href="{{ route('farmers.index') }}"><i class="fas fa-user-plus"></i>Farmers</a>
+                <li>
+                    <a href="{{ route('farms.index') }}"><i class="fas fa-tree"></i>Farms</a>
+                </li>
+                <li>
+                    <a href="{{ route('harvests.index') }}"><i class="fas fa-leaf"></i>Harvests</a>
+                </li>
+                <li>
+                    <a href="{{ route('coffee-products.index') }}"><i class="fas fa-coffee"></i>Coffee Products</a>
+                </li>
+
                 <li>
                     <a href="{{ route('cooperatives.coffee.orders') }}"><i class="fas fa-shopping-cart"></i>Coffee Orders</a>
                 <li>

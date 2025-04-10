@@ -32,9 +32,10 @@
                     <td>${{ number_format($order->total_amount, 2) }}</td>
                     <td>{{ ucfirst($order->status) }}</td>
                     <td>
-                        <button class="btn btn-info" data-toggle="modal" data-target="#orderModal{{ $order->id }}">
+                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal{{ $order->id }}">
                             View / Update Status
                         </button>
+                        <a href="{{ route('invoice.download', $order->id) }}" class="btn btn-success btn-sm">Download Invoice PDF</a>
                     </td>
                 </tr>
             @endforeach
@@ -66,7 +67,7 @@
                         <p>{{ ucfirst($order->status) }}</p>
 
                         <!-- Form to change order status -->
-                        <form action="{{ route('admin.orders.updateStatus', $order->id) }}" method="POST">
+                        <form action="{{ route('cooperatives.orders.updateStatus', $order->id) }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="status" class="form-label">Change Status</label>
