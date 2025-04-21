@@ -77,7 +77,9 @@
                 <li>
                     <a href="{{ route('coffee-products.index') }}"><i class="fas fa-coffee"></i>Coffee Products</a>
                 </li>
-
+                <li>
+                    <a href="{{ route('coop.coffee-tips') }}"><i class="fas fa-coffee"></i>Coffee Tips</a>
+                </li>
                 <li>
                     <a href="{{ route('cooperatives.coffee.orders') }}"><i class="fas fa-shopping-cart"></i>Coffee Orders</a>
                 <li>

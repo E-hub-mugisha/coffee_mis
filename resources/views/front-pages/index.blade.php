@@ -450,9 +450,9 @@
         <div class="row row-gap-4 align-items-center">
             @foreach ( $coffeeTips as $tips )
             <div class="col-xxl-3 col-lg-4 col-md-6">
-                <a href="blog-detail.html" class="blog-1">
+                <a href="{{ route('coffee-tips-detail', $tips->id )}}" class="blog-1">
                     <div class="blog-img">
-                        <img src="{{ asset('front-pages/assets/media/blog/image.jpg') }}" alt="">
+                        <img src="{{ asset('image/coffee-tips/' . $tips->image) }}" alt="">
                     </div>
                     <div class="blog-content">
                         <div class="d-flex align-items-center gap-20 mb-12">

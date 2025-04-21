@@ -9,107 +9,116 @@
         </div>
     </div>
     <div class="row">
+        {{-- Total Members --}}
         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
             <div class="card">
                 <div class="content">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="icon-big text-center">
-                                <i class="teal fas fa-shopping-cart"></i>
+                                <i class="teal fas fa-users"></i>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="detail">
-                                <p class="detail-subtitle">New Orders</p>
-                                <span class="number">6,267</span>
+                                <p class="detail-subtitle">Members</p>
+                                <span class="number">{{ $cooperative->members_count }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr />
                         <div class="stats">
-                            <i class="fas fa-calendar"></i> For this Week
+                            <i class="fas fa-user-plus"></i> Total Members
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- Total Products --}}
         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
             <div class="card">
                 <div class="content">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="icon-big text-center">
-                                <i class="olive fas fa-money-bill-alt"></i>
+                                <i class="olive fas fa-boxes"></i>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="detail">
-                                <p class="detail-subtitle">Revenue</p>
-                                <span class="number">$180,900</span>
+                                <p class="detail-subtitle">Products</p>
+                                <span class="number">{{ $cooperative->products_count }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr />
                         <div class="stats">
-                            <i class="fas fa-calendar"></i> For this Month
+                            <i class="fas fa-calendar"></i> Total Products
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- Total Farms --}}
         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
             <div class="card">
                 <div class="content">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="icon-big text-center">
-                                <i class="violet fas fa-eye"></i>
+                                <i class="violet fas fa-tractor"></i>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="detail">
-                                <p class="detail-subtitle">Page views</p>
-                                <span class="number">28,210</span>
+                                <p class="detail-subtitle">Farms</p>
+                                <span class="number">{{ $cooperative->farms_count }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr />
                         <div class="stats">
-                            <i class="fas fa-stopwatch"></i> For this Month
+                            <i class="fas fa-calendar-day"></i> Total Farms
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- Coffee Tips --}}
         <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
             <div class="card">
                 <div class="content">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="icon-big text-center">
-                                <i class="orange fas fa-envelope"></i>
+                                <i class="orange fas fa-lightbulb"></i>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="detail">
-                                <p class="detail-subtitle">Support Request</p>
-                                <span class="number">75</span>
+                                <p class="detail-subtitle">Coffee Tips</p>
+                                <span class="number">{{ $cooperative->coffee_tips_count }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr />
                         <div class="stats">
-                            <i class="fas fa-envelope-open-text"></i> For this week
+                            <i class="fas fa-book"></i> Tips Shared
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-md-12">
             <div class="row">
@@ -117,15 +126,16 @@
                     <div class="card">
                         <div class="content">
                             <div class="head">
-                                <h5 class="mb-0">Traffic Overview</h5>
-                                <p class="text-muted">Current year website visitor data</p>
+                                <h5 class="mb-0">Harvest Overview</h5>
+                                <p class="text-muted">Monthly harvest data for this year</p>
                             </div>
                             <div class="canvas-wrapper">
-                                <canvas class="chart" id="trafficflow"></canvas>
+                                <canvas class="chart" id="harvestChart"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="card">
                         <div class="content">
@@ -145,58 +155,53 @@
             <div class="card">
                 <div class="content">
                     <div class="head">
-                        <h5 class="mb-0">Top Visitors by Country</h5>
-                        <p class="text-muted">Current year website visitor data</p>
+                        <h5 class="mb-0">Latest Members</h5>
+                        <p class="text-muted">Recently joined cooperative members</p>
                     </div>
                     <div class="canvas-wrapper">
                         <table class="table table-striped">
                             <thead class="success">
                                 <tr>
-                                    <th>Country</th>
-                                    <th class="text-end">Unique Visitors</th>
+                                    <th>Name</th>
+                                    <th class="text-end">Joined</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($cooperative->members as $member)
                                 <tr>
-                                    <td><i class="flag-icon flag-icon-us"></i> United States</td>
-                                    <td class="text-end">27,340</td>
+                                    <td>{{ $member->name }}</td>
+                                    <td class="text-end">{{ $member->created_at->format('M d, Y') }}</td>
                                 </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="content">
+                    <div class="head">
+                        <h5 class="mb-0">Latest Products</h5>
+                        <p class="text-muted">Recently added coffee products</p>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <table class="table table-striped">
+                            <thead class="success">
                                 <tr>
-                                    <td><i class="flag-icon flag-icon-in"></i> India</td>
-                                    <td class="text-end">21,280</td>
+                                    <th>Name</th>
+                                    <th class="text-end">Added</th>
                                 </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($cooperative->coffeeProducts as $product)
                                 <tr>
-                                    <td><i class="flag-icon flag-icon-jp"></i> Japan</td>
-                                    <td class="text-end">18,210</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td class="text-end">{{ $product->created_at->format('M d, Y') }}</td>
                                 </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-gb"></i> United Kingdom</td>
-                                    <td class="text-end">15,176</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-es"></i> Spain</td>
-                                    <td class="text-end">14,276</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-de"></i> Germany</td>
-                                    <td class="text-end">13,176</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-br"></i> Brazil</td>
-                                    <td class="text-end">12,176</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-id"></i> Indonesia</td>
-                                    <td class="text-end">11,886</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-ph"></i> Philippines</td>
-                                    <td class="text-end">11,509</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="flag-icon flag-icon-nz"></i> New Zealand</td>
-                                    <td class="text-end">1,700</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -207,119 +212,100 @@
             <div class="card">
                 <div class="content">
                     <div class="head">
-                        <h5 class="mb-0">Most Visited Pages</h5>
-                        <p class="text-muted">Current year website visitor data</p>
+                        <h5 class="mb-0">Latest Farms</h5>
+                        <p class="text-muted">Recently registered farms</p>
                     </div>
                     <div class="canvas-wrapper">
                         <table class="table table-striped">
                             <thead class="success">
                                 <tr>
-                                    <th>Page Name</th>
-                                    <th class="text-end">Visitors</th>
+                                    <th>Farm Name</th>
+                                    <th class="text-end">Registered</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($cooperative->farms as $farm)
                                 <tr>
-                                    <td>/about.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">8,340</td>
+                                    <td>{{ $farm->name }}</td>
+                                    <td class="text-end">{{ $farm->created_at->format('M d, Y') }}</td>
                                 </tr>
-                                <tr>
-                                    <td>/special-promo.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">7,280</td>
-                                </tr>
-                                <tr>
-                                    <td>/products.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">6,210</td>
-                                </tr>
-                                <tr>
-                                    <td>/documentation.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">5,176</td>
-                                </tr>
-                                <tr>
-                                    <td>/customer-support.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">4,276</td>
-                                </tr>
-                                <tr>
-                                    <td>/index.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">3,176</td>
-                                </tr>
-                                <tr>
-                                    <td>/products-pricing.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">2,176</td>
-                                </tr>
-                                <tr>
-                                    <td>/product-features.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">1,886</td>
-                                </tr>
-                                <tr>
-                                    <td>/contact-us.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">1,509</td>
-                                </tr>
-                                <tr>
-                                    <td>/terms-and-condition.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                    <td class="text-end">1,100</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-3">
+        <div class="col-md-6">
             <div class="card">
                 <div class="content">
-                    <div class="row">
-                        <div class="dfd text-center">
-                            <i class="blue large-icon mb-2 fas fa-thumbs-up"></i>
-                            <h4 class="mb-0">+21,900</h4>
-                            <p class="text-muted">FACEBOOK PAGE LIKES</p>
-                        </div>
+                    <div class="head">
+                        <h5 class="mb-0">Latest Harvests</h5>
+                        <p class="text-muted">Recent coffee harvest entries</p>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <table class="table table-striped">
+                            <thead class="success">
+                                <tr>
+                                    <th>Harvest ID</th>
+                                    <th class="text-end">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($cooperative->harvests as $harvest)
+                                <tr>
+                                    <td>Harvest #{{ $harvest->id }}</td>
+                                    <td class="text-end">{{ $harvest->created_at->format('M d, Y') }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="dfd text-center">
-                            <i class="orange large-icon mb-2 fas fa-reply-all"></i>
-                            <h4 class="mb-0">+22,566</h4>
-                            <p class="text-muted">INSTAGRAM FOLLOWERS</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="dfd text-center">
-                            <i class="grey large-icon mb-2 fas fa-envelope"></i>
-                            <h4 class="mb-0">+15,566</h4>
-                            <p class="text-muted">E-MAIL SUBSCRIBERS</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="dfd text-center">
-                            <i class="olive large-icon mb-2 fas fa-dollar-sign"></i>
-                            <h4 class="mb-0">+98,601</h4>
-                            <p class="text-muted">TOTAL SALES</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById('harvestChart').getContext('2d');
+        const harvestChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: @json($months),
+                datasets: [{
+                    label: 'Harvest Quantity (kg)',
+                    data: @json($totals),
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.3,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantity (kg)'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 
 @endsection

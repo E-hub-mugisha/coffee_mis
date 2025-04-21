@@ -220,4 +220,19 @@ class HomeController extends Controller
 
         return redirect()->route('orders.show', $order->id)->with('success', 'Purchase successful!');
     }
+
+    public function contact()
+    {
+        return view('front-pages.contact');
+    }
+    public function coffeeTips()
+    {
+        $coffeeTips = CoffeeTip::all();
+        return view('front-pages.coffee-tips', compact('coffeeTips'));
+    }
+    public function coffeeTipsDetail($id)
+    {
+        $tip = CoffeeTip::findOrFail($id);
+        return view('front-pages.coffee-tips-detail', compact('tip'));
+    }
 }

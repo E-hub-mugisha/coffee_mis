@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CoffeeOrder;
+use App\Models\CoffeePurchaseOrder;
 use App\Models\Harvest;
 use App\Models\PurchaseOrder;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -33,7 +34,7 @@ class PurchaseOrderController extends Controller
 
         return back()->with('success', 'Order status updated successfully.');
     }
-    
+
 
     public function AdminOrders()
     {
@@ -71,5 +72,40 @@ class PurchaseOrderController extends Controller
 
         // Redirect to home page after download
         return redirect()->back()->with('success', 'Invoice downloaded successfully!');
+    }
+
+    public function createOrder(Request $request)
+    {
+        $request->validate([
+            'coffee_id' => 'required|exists:coffees,id',
+            'quantity' => 'required|integer|min:1', 
+            'delivery_address' => 'required|string',
+        ]);
+
+        // Create the order record
+        $order = new CoffeePurchaseOrder();
+        $order->buyer_id = Auth::user()->id;
+        $order->cooperative_id = $request->cooperative_id;
+        $order->status = 'pending';
+        $order->total_price = 0; // Will be calculated below
+        $order->save();
+
+        // Loop through products and store them in the pivot table
+        $totalPrice = 0;
+        foreach ($request->products as $product) {
+            $productData = Product::find($product['product_id']);
+            $totalPrice += $productData->price * $product['quantity'];
+
+            $order->products()->attach($product['product_id'], [
+                'quantity' => $product['quantity'],
+                'price' => $productData->price
+            ]);
+        }
+
+        // Update the order with the total price
+        $order->total_price = $totalPrice;
+        $order->save();
+
+        return redirect()->route('orders.index')->with('success', 'Order placed successfully');
     }
 }

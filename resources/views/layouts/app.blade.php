@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from uiparadox.co.uk/templates/sip-savor/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Apr 2025 05:29:30 GMT -->
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Coffee Shop">
 
-    <title>Sip Savor</title>
+    <title>@yield('title') </title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front-pages/assets/media/favicon.png') }}">

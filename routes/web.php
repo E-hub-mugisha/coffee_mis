@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CoffeeProductController;
+use App\Http\Controllers\CoffeeTipsController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\HarvestController;
 use App\Http\Controllers\FarmController;
@@ -17,8 +18,17 @@ use App\Http\Controllers\PurchaseOrderController;
 use App\Models\CoffeeOrder;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact_us', [HomeController::class,'contact'])->name('contact');
+Route::get('/coffee-tips', [HomeController::class, 'coffeeTips'])->name('coffee-tips');
+Route::get('/coffee-tips/detail/{id}', [HomeController::class, 'coffeeTipsDetail'])->name('coffee-tips-detail');
 Route::get('/coffee_products', [HomeController::class, 'coffeeProduct'])->name('coffee.products');
 Route::get('/coffee_products/{id}', [HomeController::class, 'showCoffeeProduct'])->name('coffee.product.show');
+
+Route::get('/get/cooperatives', [CooperativeController::class, 'cooperatives'])->name('front.cooperatives');
+Route::get('/get/cooperatives/{id}', [CooperativeController::class, 'showCooperative'])->name('front.cooperative.detail');
+Route::get('/get/cooperatives/{id}/products', [CooperativeController::class, 'showCooperativeProducts'])->name('front.cooperative.products');
+Route::get('/get/cooperatives/{id}/members', [CooperativeController::class, 'showCooperativeMembers'])->name('front.cooperative.members');
+Route::get('/get/cooperatives/{id}/tips', [CooperativeController::class, 'showCooperativeTips'])->name('front.cooperative.tips');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [HomeController::class, 'showCart'])->name('cart.show');
@@ -159,6 +169,13 @@ Route::middleware(['auth', 'role:cooperative'])->group(function () {
 
     // Coffee Products Routes
     Route::resource('/coffee-products', CoffeeProductController::class);
+
+    // Coffee Tips Routes
+    Route::get('/coffee/tips', [CoffeeTipsController::class, 'index'])->name('coop.coffee-tips');
+    Route::post('/coffee/tips', [CoffeeTipsController::class, 'store'])->name('coop.coffee-tips.store');
+    Route::get('/coffee/tips/{id}', [CoffeeTipsController::class, 'show'])->name('coop.coffee-tips.show');
+    Route::put('/coffee/tips/{id}', [CoffeeTipsController::class, 'update'])->name('coop.coffee-tips.update');
+    Route::delete('/coffee/tips/{id}', [CoffeeTipsController::class, 'destroy'])->name('coop.coffee-tips.destroy');
 });
 
 

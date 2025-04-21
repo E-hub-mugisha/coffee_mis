@@ -11,13 +11,13 @@
                         <li>
                             <a href="{{ route('home')}}" class="active">Home</a>
                         </li>
-                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="{{ route('coffee-tips')}}">Coffee Tips</a></li>
                         <li class="dropdown">
                             <a href="javascript:void(0); ">Pages
                             </a>
                             <ul>
                                 <li><a href="about.html">About Us</a></li>
-                                <li><a href="blogs.html">Blog</a></li>
+                                <li><a href="{{ route('front.cooperatives') }}">cooperatives</a></li>
                                 <li><a href="blog-with-sidebar.html">Blog with sidebar</a></li>
                                 <li><a href="blog-detail.html">Blog Detail</a></li>
                                 <li><a href="404.html">404</a></li>
@@ -28,7 +28,7 @@
                             <a href="{{ route('coffee.products') }}">Coffee Products</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="{{ route('contact')}}">Contact Us</a>
                         </li>
                     </ul>
                 </div>
