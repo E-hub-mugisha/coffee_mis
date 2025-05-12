@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CoffeeProduct;
 use App\Models\CoffeeTip;
 use App\Models\Cooperative;
+use App\Models\CooperativeFeedback;
 use App\Models\User;
+use App\Models\UserFeedback;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,7 +94,7 @@ class CooperativeController extends Controller
             $months[] = Carbon::create()->month($i)->format('M');
             $totals[] = $monthlyHarvests[$i] ?? 0;
         }
-        return view('cooperatives.dashboard', compact('cooperative','months', 'totals'));
+        return view('cooperatives.dashboard', compact('cooperative', 'months', 'totals'));
     }
     public function coopProfile()
     {
@@ -138,7 +141,7 @@ class CooperativeController extends Controller
     }
     public function cooperatives()
     {
-        $cooperatives = Cooperative::all();
+        $cooperatives = Cooperative::simplePaginate(8);
         return view('front-pages.cooperatives', compact('cooperatives'));
     }
     public function showCooperative($id)
@@ -149,7 +152,8 @@ class CooperativeController extends Controller
     public function showCooperativeProducts($id)
     {
         $cooperative = Cooperative::findOrFail($id);
-        return view('front-pages.cooperative_products', compact('cooperative'));
+        $coffeeProducts = $cooperative->coffeeProducts()->simplePaginate(8);
+        return view('front-pages.coffee_products', compact('cooperative', 'coffeeProducts'));
     }
     public function showCooperativeMembers($id)
     {
@@ -161,5 +165,39 @@ class CooperativeController extends Controller
         $cooperative = Cooperative::findOrFail($id);
         $coffeeTips = CoffeeTip::where('user_id', $cooperative->id)->get();
         return view('front-pages.cooperative_tips', compact('cooperative', 'coffeeTips'));
+    }
+    public function feedback()
+    {
+        $cooperative = Cooperative::where('user_id', Auth::id())->first();
+
+        if (!$cooperative) {
+            return redirect()->back()->with('error', 'Cooperative not found.');
+        }
+
+        $productIds = CoffeeProduct::where('cooperative_id', $cooperative->id)->pluck('id');
+
+        $feedbacks = UserFeedback::whereIn('coffee_product_id', $productIds)
+            ->with(['user', 'coffeeProduct'])
+            ->latest()
+            ->get();
+
+        return view('cooperatives.feedback', compact('feedbacks'));
+    }
+    public function cooperativeFeedback(Request $request)
+    {
+        $request->validate([
+            'cooperative_id' => 'required|exists:cooperatives,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:500',
+        ]);
+
+        CooperativeFeedback::create([
+            'user_id' => Auth::id(),
+            'cooperative_id' => $request->cooperative_id,
+            'rating' => $request->rating,
+            'comment' => $request->comment,
+        ]);
+
+        return redirect()->back()->with('success', 'Feedback submitted successfully.');
     }
 }

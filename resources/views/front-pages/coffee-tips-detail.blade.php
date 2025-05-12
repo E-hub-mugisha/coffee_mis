@@ -4,7 +4,6 @@
 
 <div class="title-banner">
     <div class="container-fluid">
-        <img class="title-cup-img" src="assets/media/banner/title-img-1.png" alt="">
         <div class="title-text">
             <h1 class="color-primary">{{ $tip->title}}</h1>
         </div>

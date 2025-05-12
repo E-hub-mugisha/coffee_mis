@@ -20,6 +20,8 @@
                 <th>Customer</th>
                 <th>Total Amount</th>
                 <th>Status</th>
+                <th>Transction ID</th>
+                <th>Payment status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -31,6 +33,8 @@
                     <td>{{ $order->user->name }}</td>
                     <td>${{ number_format($order->total_amount, 2) }}</td>
                     <td>{{ ucfirst($order->status) }}</td>
+                    <td>{{ $order->transaction_id }}</td>
+                    <td>{{ $order->payment_status }}</td>
                     <td>
                         <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#orderModal{{ $order->id }}">
                             View / Update Status

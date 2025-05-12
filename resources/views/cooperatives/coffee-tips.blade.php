@@ -11,7 +11,7 @@
         {{ session('success') }}
     </div>
     @endif
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="dataTables-example" width="100%">
         <thead>
             <tr>
                 <th>title</th>

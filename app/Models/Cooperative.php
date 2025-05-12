@@ -40,4 +40,8 @@ class Cooperative extends Model
     {
         return $this->hasMany(Harvest::class);
     }
+    public function feedbacks()
+    {
+        return $this->hasMany(CooperativeFeedback::class);
+    }
 }

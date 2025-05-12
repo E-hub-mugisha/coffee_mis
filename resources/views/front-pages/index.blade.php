@@ -9,16 +9,15 @@
             <div class="col-lg-6">
                 <div class="hero-content">
                     <img class="hero-img-1" src="{{ asset('front-pages/assets/media/hero/img-1.png') }}" alt="">
-                    <h1 class="hero-title mb-24">Sip & Savor</h1>
-                    <h1 class="color-primary mb-12">Fuel Your Day, Sip by Sip</h1>
-                    <p class="light-gray mb-32">Lorem ipsum dolor sit amet consectetur. Ante tortor risus in
-                        bibendum fermentum et non. Aliquam dignissim libero id mi sit nunc praesent.
-                        Pellentesque vel proin volutpat at convallis est eu elit. Justo.</p>
+                    <h1 class="hero-title mb-24">Coffee Bridge MIS</h1>
+                    <p class="light-gray mb-32">
+                        The Coffee Farmers Bridge MIS is a digital platform designed to connect coffee farmers directly to buyers, eliminating middlemen and ensuring fair prices.
+                    </p>
                     <div class="d-flex align-items-center gap-24">
                         <a href="{{ route('coffee.products') }}" class="cus-btn">
-                            <span class="text">Find Your Flavor</span>
+                            <span class="text">Find Your Coffee</span>
                         </a>
-                        <a href="contact.html" class="hero-cus-button">
+                        <a href="{{ route('contact')}}" class="hero-cus-button">
                             <span class="text">contact us</span>
                         </a>
                     </div>
@@ -39,52 +38,6 @@
 </section>
 <!-- HERO BANNER END -->
 
-<section class="ingredients-sec">
-    <div class="container-fluid">
-        <div class="row align-items-center row-gap-4">
-            <div class="col-lg-4">
-                <div class="ingredients-content">
-                    <div>
-                        <p class="fw-600 color-ter mb-4p">Ingredients</p>
-                        <h6 class="color-primary">100% Organic</h6>
-                    </div>
-                    <div class="ingredients-line"></div>
-                    <div>
-                        <p class="fw-600 color-ter mb-4p">Material</p>
-                        <h6 class="color-primary">Coffee Beverage</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="text-center">
-                    <img src="{{ asset('front-pages/assets/media/images/cup-img-1.png') }}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ingredients-content-2">
-                    <div class="">
-                        <div class="rating-block">
-                            <div class="d-flex align-items-center gap-4">
-                                <i class="fa-solid fa-star color-ter"></i>
-                                <i class="fa-solid fa-star color-ter"></i>
-                                <i class="fa-solid fa-star color-ter"></i>
-                                <i class="fa-solid fa-star color-ter"></i>
-                                <i class="fa-solid fa-star color-ter"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h6 class="light-gray">Over <span class="color-primary"> 3,254</span></h6>
-                            <p class="fw-500 light-gray">Five Star Reviews</p>
-                        </div>
-                    </div>
-                    <div class="group-img">
-                        <img src="{{ asset('front-pages/assets/media/images/group-img.png') }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ABOUT START -->
 <section class="about-sec py-80">
@@ -95,41 +48,13 @@
                     <div class="col-lg-6">
                         <div class="about-left-content">
                             <h2 class="color-primary mb-24">About Us</h2>
-                            <p class="light-gray mb-48">Lorem ipsum dolor sit amet consectetur. Morbi amet arcu
-                                convallis commodo sem fermentum at semper sit. Eget sit facilisi laoreet arcu
-                                lectus
-                                eros. Mauris eu amet eleifend varius urna. Ac mattis nunc quisque id feugiat.
-                                Suscipit
-                                tortor facilisis sed amet amet arcu sagittis fringilla. Enim ultrices.</p>
-                            <a href="about.html" class="cus-btn mb-48">
+                            <p class="light-gray mb-48">
+                                The Coffee Farmers Bridge MIS is a digital platform designed to connect coffee farmers directly to buyers, eliminating middlemen and ensuring fair prices.
+                                It provides farmers with tools for tracking their harvests, managing finances, and accessing market information. By leveraging technology, the platform aims to empower farmers, enhance transparency in the coffee supply chain, and promote sustainable practices.</p>
+                            </p>
+                            <a href="" class="cus-btn mb-48">
                                 <span class="text">more about</span>
                             </a>
-                            <div class="image-block">
-                                <img class="img-vector" src="{{ asset('front-pages/assets/media/about/img-1.jpg') }}" alt="">
-                                <img class="cup-vector" src="{{ asset('front-pages/assets/media/about/cup-img-1.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-right-content">
-                            <div class="image-block-1 mb-48">
-                                <img class="img-vector" src="{{ asset('front-pages/assets/media/about/img-2.jpg') }}" alt="">
-                                <img class="cup-vector" src="{{ asset('front-pages/assets/media/about/cup-img.png') }}" alt="">
-                            </div>
-                            <h5 class="fw-700 color-ter mb-16">Brewing Connections, One Cup at a Time.</h5>
-                            <p class="light-gray">Lorem ipsum dolor sit amet consectetur. Morbi amet arcu
-                                convallis commodo
-                                sem fermentum at semper sit. Eget sit facilisi laoreet arcu lectus eros. Mauris
-                                eu amet
-                                eleifend varius urna. Ac mattis nunc quisque id feugiat. Suscipit tortor
-                                facilisis sed amet
-                                amet arcu sagittis fringilla. Enim ultrices. Lorem ipsum dolor sit amet
-                                consectetur. Morbi
-                                amet arcu convallis commodo sem fermentum at semper sit. Eget sit facilisi
-                                laoreet arcu
-                                lectus eros. Mauris eu amet eleifend varius urna. Ac mattis nunc quisque id
-                                feugiat.
-                                Suscipit tortor facilisis sed amet</p>
                         </div>
                     </div>
                 </div>
@@ -163,11 +88,7 @@
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <p class="">Lorem ipsum dolor sit amet consectetur. Morbi amet arcu convallis commodo
-                            sem
-                            fermentum at semper sit. Eget sit facilisi laoreet arcu lectus eros. Mauris eu amet
-                            eleifend
-                            varius urna. Ac mattis nunc quisque id feugiat.</p>
+                        <p class="">The Coffee Farmers Bridge MIS is a digital platform designed to connect coffee farmers directly to buyers, eliminating middlemen and ensuring fair prices..</p>
                     </div>
                 </div>
                 <div class="row row-gap-4 align-items-center">
@@ -230,9 +151,7 @@
     <div class="container-fluid">
         <div class="text-center mb-64">
             <h2 class="fw-700 color-primary mb-16">Our Special <span class="color-ter">Items</span></h2>
-            <p>Lorem ipsum dolor sit amet consectetur. Morbi amet arcu convallis commodo sem <br>fermentum at
-                semper sit. Eget sit facilisi laoreet arcu lectus eros. Mauris eu amet <br> eleifend varius
-                urna. Ac mattis nunc quisque id feugiat.</p>
+            <p>The Coffee Farmers Bridge MIS is a digital platform designed to connect coffee farmers directly to buyers, eliminating middlemen and ensuring fair prices.</p>
         </div>
         <div class="swiper itemsSwiper">
             <div class="swiper-wrapper">
@@ -248,7 +167,7 @@
                                     <i class="far fa-heart"></i>
                                 </a>
 
-                                <a href="{{ route('coffee.product.show', $coffeeProduct->id )}}" class="btn" >
+                                <a href="{{ route('coffee.product.show', $coffeeProduct->id )}}" class="btn">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
@@ -300,139 +219,6 @@
 </section>
 <!-- Special Items End -->
 
-
-
-<!-- Quality Of Product Start -->
-<section class="qualityproduct-sec py-80">
-    <div class="conainer-fluid">
-        <div class="row row-gap-4 align-content-center">
-            <div class="col-lg-5">
-                <div>
-                    <img src="{{ asset('front-pages/assets/media/images/coffee-machine.png') }}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="quality-content-wrapper">
-                    <h2 class="fw-700 color-primary mb-16">We Care About the <span class="color-ter"> Quality of
-                        </span><br class="d-sm-block d-none">
-                        <span class="color-ter">Our Products</span>
-                    </h2>
-                    <p class="mb-64">
-                        Lorem ipsum dolor sit amet consectetur. Morbi amet arcu convallis commodo sem fermentum
-                        at semper sit. Eget sit facilisi laoreet arcu lectus eros. Mauris eu amet eleifend
-                        varius urna. Ac mattis nunc quisque id feugiat.
-                    </p>
-                    <div class="about-quality-content mb-24">
-                        <div class="about-quality-block">
-                            <div class="product-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_43556_844)">
-                                        <path
-                                            d="M40.8027 20.2633C40.8027 19.6166 40.2785 19.0924 39.6319 19.0924H26.2738L28.0259 16.9084C28.1188 16.7897 28.1905 16.6555 28.2344 16.5112L30.6829 8.32316C31.3022 8.29248 31.7954 7.78213 31.7954 7.15525C31.7954 6.50861 31.2711 5.98438 30.6245 5.98438H10.9811C10.3345 5.98438 9.81026 6.50861 9.81026 7.15525C9.81026 7.78213 10.3034 8.29256 10.9227 8.32316L13.3712 16.5112C13.4151 16.6555 13.4868 16.7897 13.5797 16.9084L15.3319 19.0924H1.97361C1.32697 19.0924 0.802734 19.6166 0.802734 20.2633C0.802734 20.8901 1.29583 21.4006 1.91514 21.4312L4.36367 29.6191C4.40762 29.7634 4.47928 29.8977 4.57217 30.0163L7.85085 34.1032C8.07308 34.3802 8.40896 34.5414 8.76413 34.5414H14.8265C15.1817 34.5414 15.5176 34.3802 15.7398 34.1032L19.0185 30.0163C19.1114 29.8977 19.1829 29.7634 19.227 29.6191L20.8027 24.3496L22.3784 29.6191C22.4224 29.7634 22.494 29.8977 22.5869 30.0163L25.8656 34.1032C26.0878 34.3802 26.4237 34.5414 26.7789 34.5414H32.8413C33.1964 34.5414 33.5323 34.3802 33.7545 34.1032L37.0332 30.0163C37.1261 29.8977 37.1978 29.7634 37.2417 29.6191L39.6903 21.4312C40.3096 21.4005 40.8027 20.8901 40.8027 20.2633ZM35.248 28.1127H24.3722L22.3751 21.434H22.8234H37.2452L35.248 28.1127ZM17.2332 28.1127H6.35744L4.36032 21.434H18.7821H19.2304L17.2332 28.1127ZM15.3647 15.0047L13.3676 8.32597H28.2377L26.2406 15.0047H15.3647ZM16.9332 17.3465H24.6722L23.2716 19.0923H18.3338L16.9332 17.3465ZM14.2647 32.1997H9.32591L7.92586 30.4545H15.6648L14.2647 32.1997ZM32.2795 32.1997H27.3407L25.9406 30.4545H33.6795L32.2795 32.1997Z"
-                                            fill="#371406" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_43556_844">
-                                            <rect width="40" height="40" fill="white"
-                                                transform="translate(0.800781 0.262695)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div>
-                                <h6 class="fw-700 dark-gray mb-8">Freshly Ground for Full Flavor</h6>
-                                <p>Lorem ipsum dolor sit amet consectetur. <br>Morbi amet arcu convallis commodo
-                                    sem<br> fermentum.</p>
-                            </div>
-                        </div>
-                        <div class="about-quality-block">
-                            <div class="product-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_43556_836)">
-                                        <path
-                                            d="M39.664 18.0252C38.223 15.5294 35.6092 13.9355 32.3041 13.5373C29.1238 13.1539 25.6601 13.9319 22.5504 15.7273C22.4516 15.7844 22.3536 15.8423 22.2563 15.9009C22.1008 15.258 21.9088 14.6201 21.6802 13.9919C20.452 10.6177 18.2984 7.79539 15.6161 6.04468C12.8283 4.22539 9.80157 3.76624 7.09329 4.75179C4.38509 5.73749 2.36157 8.03484 1.39548 11.2206C0.465945 14.2859 0.630398 17.8323 1.85852 21.2064C3.08665 24.5806 5.24024 27.403 7.92259 29.1537C9.74969 30.3462 11.6795 30.9543 13.5551 30.9543C14.2137 30.9543 14.8652 30.8775 15.5037 30.7265C15.642 31.0583 15.8018 31.3823 15.9837 31.6972C17.4247 34.193 20.0384 35.7869 23.3436 36.1851C23.8739 36.249 24.4118 36.2806 24.9549 36.2806C27.6688 36.2806 30.5061 35.4912 33.0973 33.9951C36.207 32.1998 38.6125 29.5887 39.8707 26.6432C41.1784 23.5816 41.105 20.5212 39.664 18.0252ZM8.65751 6.73289C10.4631 6.33671 12.4498 6.77703 14.3352 8.00749C16.5956 9.48281 18.422 11.8927 19.4778 14.7936C19.7855 15.6387 20.0165 16.5031 20.1699 17.3712C18.6651 18.6037 17.4184 20.05 16.5066 21.6261C15.7082 19.605 14.2977 17.8498 12.4099 16.6177C10.0153 15.055 8.60235 12.415 8.63016 9.55578L8.65751 6.73289ZM9.2036 27.1909C6.94313 25.7156 5.11673 23.3057 4.06094 20.4049C3.00516 17.5041 2.85509 14.484 3.63844 11.9008C4.1711 10.1442 5.09313 8.74726 6.30305 7.82648L6.28649 9.5332C6.25095 13.1963 8.06118 16.5785 11.1289 18.5806C13.5234 20.1434 14.9364 22.7834 14.9087 25.6426L14.9016 26.3623C14.8267 27.0752 14.8297 27.7766 14.9113 28.4586C13.0977 28.8662 11.0995 28.4283 9.2036 27.1909ZM17.9323 24C18.9926 21.5177 21.0488 19.3006 23.7223 17.7571C25.9576 16.4666 28.3848 15.7852 30.6868 15.7852C31.138 15.7852 31.5845 15.8114 32.0238 15.8643C33.8461 16.0839 35.382 16.7494 36.4989 17.7809L34.8152 18.061C31.2016 18.662 28.1852 21.0321 26.7461 24.4009C25.6229 27.0304 23.2684 28.8803 20.4478 29.3494L17.663 29.8127C16.9593 28.1033 17.0479 26.0704 17.9323 24ZM37.7154 25.7224C36.6551 28.2047 34.5988 30.4218 31.9254 31.9653C29.252 33.5087 26.3038 34.1806 23.6239 33.8582C21.8016 33.6386 20.2657 32.9731 19.1488 31.9416L20.8324 31.6615C24.446 31.0605 27.4625 28.6904 28.9016 25.3216C30.0248 22.6921 32.3793 20.8422 35.1999 20.373L37.9847 19.9098C38.6884 21.6191 38.5998 23.652 37.7154 25.7224Z"
-                                            fill="#ECD6D0" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_43556_836">
-                                            <rect width="40" height="40" fill="white"
-                                                transform="translate(0.800781 0.262695)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div>
-                                <h6 class="fw-700 dark-gray mb-8">Slow Roasting Perfection</h6>
-                                <p>Lorem ipsum dolor sit amet consectetur. <br>Morbi amet arcu convallis commodo
-                                    sem<br> fermentum.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-quality-content">
-                        <div class="about-quality-block">
-                            <div class="product-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_43556_848)">
-                                        <path
-                                            d="M16.2749 7.97281C14.7373 6.7307 14.3892 5.40289 14.368 4.50765C14.3163 2.32976 16.036 0.736003 16.2324 0.561549C16.7186 0.129048 17.4635 0.172642 17.896 0.658971C18.3285 1.1453 18.2849 1.89007 17.7986 2.32265C17.7876 2.33249 16.6981 3.35187 16.7242 4.45179C16.7381 5.03781 17.0756 5.58984 17.756 6.13945C19.2936 7.38156 19.6417 8.70938 19.6629 9.60461C19.7147 11.7825 17.9949 13.3763 17.7986 13.5508C17.5735 13.7509 17.2926 13.8495 17.0128 13.8495C16.6881 13.8495 16.3649 13.7167 16.1326 13.4554C15.7001 12.9691 15.7413 12.2263 16.2277 11.7938C16.537 11.5126 17.3337 10.5795 17.3066 9.65164C17.2895 9.06891 16.9521 8.51969 16.2749 7.97281Z"
-                                            fill="#371406" />
-                                        <path
-                                            d="M23.7535 7.97281C22.2158 6.7307 21.8677 5.40289 21.8465 4.50765C21.7948 2.32976 23.5146 0.736003 23.7109 0.561549C24.1971 0.129048 24.942 0.172642 25.3746 0.658971C25.8071 1.1453 25.7635 1.89007 25.2771 2.32265C25.2661 2.33249 24.1766 3.35187 24.2027 4.45179C24.2166 5.03781 24.5541 5.58984 25.2345 6.13945C26.7721 7.38156 27.1203 8.70938 27.1414 9.60461C27.1932 11.7825 25.4734 13.3763 25.2771 13.5508C25.0521 13.7509 24.7711 13.8495 24.4914 13.8495C24.1667 13.8495 23.8435 13.7167 23.6111 13.4554C23.1786 12.9691 23.2199 12.2263 23.7062 11.7938C24.0155 11.5126 24.8122 10.5795 24.7851 9.65164C24.768 9.06891 24.4306 8.51969 23.7535 7.97281Z"
-                                            fill="#371406" />
-                                        <path
-                                            d="M6.88126 19.4948H8.27596V18.6306C8.27596 17.9798 8.80353 17.4521 9.45439 17.4521H39.5305C40.1813 17.4521 40.709 17.9797 40.709 18.6306V24.85C40.709 30.3455 37.6672 35.1778 33.1005 37.9077H39.5298C40.1806 37.9077 40.7083 38.4352 40.7083 39.0861C40.7083 39.737 40.1808 40.2645 39.5298 40.2645H9.45432C8.80353 40.2645 8.27588 39.737 8.27588 39.0861C8.27588 38.4352 8.80346 37.9077 9.45432 37.9077H15.8844C13.2875 36.3553 11.1838 34.1234 9.85229 31.4757H6.88119C3.57806 31.4757 0.890705 28.7883 0.890705 25.4852C0.890705 22.1821 3.57813 19.4948 6.88126 19.4948ZM10.6328 24.85C10.6328 32.05 16.8503 37.9077 24.4925 37.9077C32.1347 37.9077 38.3521 32.05 38.3521 24.85V19.809H10.6328V24.85H10.6328ZM6.88126 29.1189H8.90908C8.49728 27.7627 8.27596 26.3304 8.27596 24.85V21.8515H6.88126C4.87767 21.8515 3.24759 23.4816 3.24759 25.4852C3.24759 27.4888 4.87767 29.1189 6.88126 29.1189Z"
-                                            fill="#371406" />
-                                        <path
-                                            d="M31.232 7.97281C29.6943 6.7307 29.3462 5.40289 29.325 4.50765C29.2733 2.32976 30.9931 0.736003 31.1894 0.561549C31.6757 0.129048 32.4205 0.172642 32.8531 0.658971C33.2856 1.14522 33.242 1.89007 32.7557 2.32265C32.7446 2.33249 31.6551 3.35187 31.6812 4.45179C31.6951 5.03781 32.0326 5.58984 32.713 6.13945C34.2507 7.38156 34.5988 8.70938 34.62 9.60461C34.6716 11.7824 32.9518 13.3762 32.7556 13.5507C32.531 13.7504 32.2514 13.8486 31.9728 13.8486C31.6481 13.8486 31.3247 13.7151 31.0918 13.4533C30.6593 12.967 30.7029 12.2222 31.1892 11.7896C31.2003 11.7798 32.2898 10.7604 32.2637 9.66047C32.25 9.07446 31.9124 8.52235 31.232 7.97281Z"
-                                            fill="#371406" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_43556_848">
-                                            <rect width="40" height="40" fill="white"
-                                                transform="matrix(-1 0 0 1 40.8008 0.262695)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div>
-                                <h6 class="fw-700 dark-gray mb-8">Sustainable and Organic</h6>
-                                <p>Lorem ipsum dolor sit amet consectetur. <br>Morbi amet arcu convallis commodo
-                                    sem<br> fermentum.</p>
-                            </div>
-                        </div>
-                        <div class="about-quality-block">
-                            <div class="product-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_43556_798)">
-                                        <path
-                                            d="M7.91406 21.4346H10.3947L12.7384 40.2627H28.8709L31.2147 21.4346H33.6953V14.4033H31.2864C30.8412 10.3925 28.136 6.97277 24.3203 5.62848V0.262695H17.2891V5.62848C13.4734 6.97277 10.7682 10.3925 10.323 14.4033H7.91406V21.4346ZM12.7565 21.4346H17.2891V26.2002H13.3497L12.7565 21.4346ZM14.8085 37.9189L14.5167 35.5752H27.0926L26.8008 37.9189H14.8085ZM28.2597 26.2002H24.3203V21.4346H28.8529L28.2597 26.2002ZM31.3516 19.0908H24.3203V16.7471H31.3516V19.0908ZM28.9227 14.4033H24.3203V8.16129C26.7932 9.33168 28.5313 11.6756 28.9227 14.4033ZM19.6328 2.60645H21.9766V28.5439H27.9679L27.3844 33.2314H14.225L13.6415 28.5439H19.6328V2.60645ZM17.2891 8.16129V14.4033H12.6867C13.0781 11.6756 14.8162 9.33168 17.2891 8.16129ZM10.2578 16.7471H17.2891V19.0908H10.2578V16.7471Z"
-                                            fill="#371406" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_43556_798">
-                                            <rect width="40" height="40" fill="white"
-                                                transform="translate(0.800781 0.262695)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div>
-                                <h6 class="fw-700 dark-gray mb-8">Low-Acidity for a Smoother Sip</h6>
-                                <p>Lorem ipsum dolor sit amet consectetur. <br>Morbi amet arcu convallis commodo
-                                    sem<br> fermentum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Quality Of Product End -->
 
 <!-- BLOG START -->
 <section class="blog-sec py-80">

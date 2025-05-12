@@ -30,4 +30,8 @@ class CoffeeProduct extends Model
     {
         return $this->belongsTo(Cooperative::class);
     }
+    public function feedbacks()
+    {
+        return $this->hasMany(UserFeedback::class);
+    }
 }

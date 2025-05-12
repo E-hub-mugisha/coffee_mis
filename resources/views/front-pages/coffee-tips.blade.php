@@ -2,18 +2,16 @@
 @section('title', 'Coffee Tips')
 @section('content')
 
-
+<div class="title-banner">
+    <div class="container-fluid">
+        <div class="title-text">
+            <h1 class="color-primary">@yield('title')</h1>
+        </div>
+    </div>
+</div>
 <!-- BLOG START -->
 <section class="blog-sec py-80 mt-5">
-    <img class="beans-vector" src="assets/media/vector/coffee-beans-vector.png" alt="">
     <div class="container-fluid">
-        <div class="text-center mb-64">
-            <h2 class="fw-700 color-primary mb-16">The Brew <span class="color-ter">Blog</span>
-            </h2>
-            <p>Lorem ipsum dolor sit amet consectetur. Morbi amet arcu convallis commodo sem <br>fermentum at
-                semper sit. Eget sit facilisi laoreet arcu lectus eros. Mauris eu amet <br> eleifend varius
-                urna. Ac mattis nunc quisque id feugiat.</p>
-        </div>
         <div class="row row-gap-4 align-items-center mb-64">
             @foreach ( $coffeeTips as $tips )
             <div class="col-xxl-3 col-lg-4 col-md-6">
@@ -124,29 +122,7 @@
         </div>
         <div class="pagination">
             <ul id="border-pagination">
-                <li class="pagination-arrow">
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <path
-                                d="M11.5703 19.906C11.5703 17.3748 9.20781 13.9998 6.50781 13.9998M6.50781 13.9998C8.05469 13.9998 11.5703 13.156 11.5703 8.09351M6.50781 13.9998H22.5391"
-                                stroke="#E8C895" stroke-width="1.6875" />
-                        </svg>
-                    </a>
-                </li>
-                <li><a href="#" class="active">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#">9</a></li>
-                <li class="pagination-arrow">
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <path
-                                d="M16.4297 19.906C16.4297 17.3748 18.7922 13.9998 21.4922 13.9998M21.4922 13.9998C19.9453 13.9998 16.4297 13.156 16.4297 8.09351M21.4922 13.9998H5.46094"
-                                stroke="#E8C895" stroke-width="1.6875" />
-                        </svg>
-                    </a>
-                </li>
+                {{ $coffeeTips->links() }}
             </ul>
         </div>
     </div>

@@ -20,7 +20,7 @@
         <!-- Sidebar -->
         <nav id="sidebar" class="active">
             <div class="sidebar-header">
-                <img src="{{ asset('assets/img/bootstraper-logo.png') }}" alt="bootraper logo" class="app-logo">
+                <h2 class="app-logo text-black">Coffee Bridge MIS</h2>
             </div>
             <ul class="list-unstyled components text-secondary">
                 <li>
@@ -50,8 +50,6 @@
                     <a href="{{ route('payments.index') }}"><i class="fas fa-credit-card"></i> Payments</a>
                 </li>
                 </li>
-                <li><a href="#"><i class="fas fa-user-friends"></i> Users</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
 
@@ -64,24 +62,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <div class="nav-dropdown">
-                                <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end nav-link-menu" aria-labelledby="nav1">
-                                    <ul class="nav-list">
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-database"></i> Backups</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i> Updates</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-user-shield"></i> Roles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
                         <li class="nav-item dropdown">
                             <div class="nav-dropdown">
                                 <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">

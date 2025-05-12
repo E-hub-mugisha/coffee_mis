@@ -20,7 +20,7 @@
         <!-- Sidebar -->
         <nav id="sidebar" class="active">
             <div class="sidebar-header">
-                <h2 class="app-logo">Coffee MIS</h2>
+                <h2 class="app-logo text-black">Coffee MIS</h2>
             </div>
             <ul class="list-unstyled components text-secondary">
 
@@ -83,7 +83,7 @@
                 <li>
                     <a href="{{ route('cooperatives.coffee.orders') }}"><i class="fas fa-shopping-cart"></i>Coffee Orders</a>
                 <li>
-                    <a href="#"><i class="fas fa-money-check-alt"></i> Coop Transactions</a>
+                    <a href="{{ route('cooperatives.coffee.feedback') }}"><i class="fas fa-money-check-alt"></i> Feedback</a>
                 </li>
                 @endif
             </ul>
@@ -101,24 +101,6 @@
                     <ul class="nav navbar-nav ms-auto">
                         {{-- Quick Links Dropdown --}}
                         @if(Auth::user()->role === 'admin')
-                        <li class="nav-item dropdown">
-                            <div class="nav-dropdown">
-                                <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end nav-link-menu" aria-labelledby="nav1">
-                                    <ul class="nav-list">
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-database"></i> Backups</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i> Updates</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-user-shield"></i> Roles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
                         @endif
 
                         {{-- User Profile Dropdown --}}

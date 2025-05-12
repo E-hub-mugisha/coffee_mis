@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Buyer\DashboardController;
 use App\Http\Controllers\CoffeeProductController;
 use App\Http\Controllers\CoffeeTipsController;
 use App\Http\Controllers\FarmerController;
@@ -18,7 +19,7 @@ use App\Http\Controllers\PurchaseOrderController;
 use App\Models\CoffeeOrder;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/contact_us', [HomeController::class,'contact'])->name('contact');
+Route::get('/contact_us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/coffee-tips', [HomeController::class, 'coffeeTips'])->name('coffee-tips');
 Route::get('/coffee-tips/detail/{id}', [HomeController::class, 'coffeeTipsDetail'])->name('coffee-tips-detail');
 Route::get('/coffee_products', [HomeController::class, 'coffeeProduct'])->name('coffee.products');
@@ -42,7 +43,15 @@ Route::middleware(['auth'])->group(function () {
         return view('front-pages.order_success', compact('order'));
     })->name('order.success');
     Route::get('/invoice/download/{orderId}', [HomeController::class, 'downloadInvoice'])->name('invoice.download');
+
+    Route::get('/checkout/{order}', [HomeController::class, 'checkoutOrder'])->name('payment.checkout');
+
+    Route::post('cooperative/feedback', [CooperativeController::class, 'cooperativeFeedback'])->name('cooperative.feedback.store');
 });
+
+Route::get('/payment/callback', [HomeController::class, 'handleCallback'])->name('payment.callback');
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('purchase_orders', \App\Http\Controllers\PurchaseOrderController::class)->only(['index', 'create', 'store']);
@@ -59,7 +68,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
     // Farmers Routes
@@ -176,7 +184,23 @@ Route::middleware(['auth', 'role:cooperative'])->group(function () {
     Route::get('/coffee/tips/{id}', [CoffeeTipsController::class, 'show'])->name('coop.coffee-tips.show');
     Route::put('/coffee/tips/{id}', [CoffeeTipsController::class, 'update'])->name('coop.coffee-tips.update');
     Route::delete('/coffee/tips/{id}', [CoffeeTipsController::class, 'destroy'])->name('coop.coffee-tips.destroy');
+
+    // Coffee Products feedback Routes
+    Route::get('/cooperative/products/feedback', [CooperativeController::class, 'feedback'])->name('cooperatives.coffee.feedback');
 });
 
+// Buyer Dashboard Routes
+Route::middleware(['auth', 'role:buyer'])->group(function () {
+    Route::get('/coffee/buyer/dashboard', [\App\Http\Controllers\Buyer\DashboardController::class, 'index'])->name('coffee.buyer.dashboard');
+    Route::get('/coffee/buyer/orders', [\App\Http\Controllers\Buyer\DashboardController::class, 'orders'])->name('buyer.orders');
+    Route::get('/coffee/buyer/orders/{id}', [\App\Http\Controllers\Buyer\DashboardController::class, 'showOrder'])->name('buyer.orders.show');
+    Route::get('/coffee/buyer/tracking/{id}', [\App\Http\Controllers\Buyer\DashboardController::class, 'track'])->name('buyer.tracking');
+    Route::get('/coffee/buyer/payments', [\App\Http\Controllers\Buyer\DashboardController::class, 'payments'])->name('buyer.payments');
+    Route::get('/coffee/buyer/feedback', [\App\Http\Controllers\Buyer\DashboardController::class, 'feedback'])->name('buyer.feedback');
+    Route::post('/coffee/buyer/feedback', [\App\Http\Controllers\Buyer\DashboardController::class, 'createFeedback'])->name('buyer.feedback.create');
+    Route::delete('/coffee/buyer/feedback/{id}', [\App\Http\Controllers\Buyer\DashboardController::class, 'deleteFeedback'])->name('buyer.feedback.delete');
+    Route::get('/coffee/buyer/profile', [\App\Http\Controllers\Buyer\DashboardController::class, 'profile'])->name('buyer.profile');
+    Route::get('/coffee/buyer/product', [\App\Http\Controllers\Buyer\DashboardController::class, 'products'])->name('buyer.products');
+});
 
 require __DIR__ . '/auth.php';

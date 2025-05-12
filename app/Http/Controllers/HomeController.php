@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
     }
     public function coffeeProduct()
     {
-        $coffeeProducts = CoffeeProduct::all();
+        $coffeeProducts = CoffeeProduct::simplePaginate(8);
         return view('front-pages.coffee_products', compact('coffeeProducts'));
     }
     public function showCoffeeProduct($id)
@@ -118,11 +119,41 @@ class HomeController extends Controller
 
             DB::commit();
 
-            return redirect()->route('order.success', $order->id)->with('success', 'Order placed successfully!');
+            return redirect()->route('payment.checkout', ['order' => $order->id]);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'Failed to place order: ' . $e->getMessage());
         }
+    }
+
+    public function checkoutOrder($orderId)
+    {
+        $order = CoffeeOrder::with('orderItems')->findOrFail($orderId);
+        return view('payment.checkout', compact('order'));
+    }
+
+    public function handleCallback(Request $request)
+    {
+        $transactionId = $request->transaction_id;
+        $txRef = $request->tx_ref;
+
+        $orderId = explode('-', $txRef)[0];
+        $order = CoffeeOrder::findOrFail($orderId);
+
+        $response = Http::withToken(env('FLW_SECRET_KEY'))
+            ->get("https://api.flutterwave.com/v3/transactions/{$transactionId}/verify");
+
+        if ($response->successful() && $response['data']['status'] === 'successful') {
+            $order->update([
+                'transaction_id' => $transactionId,
+                'payment_status' => 'paid',
+                'updated_at' => now(),
+            ]);
+
+            return redirect()->route('order.success', $order->id)->with('success', 'Payment completed!');
+        }
+
+        return redirect()->route('home')->with('error', 'Payment verification failed.');
     }
 
     public function downloadInvoice($orderId)
@@ -227,7 +258,7 @@ class HomeController extends Controller
     }
     public function coffeeTips()
     {
-        $coffeeTips = CoffeeTip::all();
+        $coffeeTips = CoffeeTip::inRandomOrder()->paginate(6);
         return view('front-pages.coffee-tips', compact('coffeeTips'));
     }
     public function coffeeTipsDetail($id)

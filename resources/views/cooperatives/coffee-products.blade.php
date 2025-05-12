@@ -7,7 +7,7 @@
 
     <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="dataTables-example" width="100%">
         <thead>
             <tr>
                 <th>Name</th>

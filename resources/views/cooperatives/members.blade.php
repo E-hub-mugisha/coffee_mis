@@ -5,7 +5,7 @@
   <h2>Members</h2>
   <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createMemberModal">Add Member</button>
 
-  <table class="table table-bordered">
+  <table class="table table-bordered"  id="dataTables-example" width="100%">
     <thead>
       <tr>
         <th>Full Name</th>

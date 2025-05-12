@@ -5,11 +5,11 @@
             <div class="col-xl-4">
                 <div class="footer-logo">
                     <a href="{{ route('home') }}">
-                        <img class="mb-16" src="{{ asset('front-pages/assets/media/footer-logo.png') }}" alt="">
+                        <h4 class="logo-text">Coffee <span>Bridge MIS</span></h4>
                     </a>
 
-                    <p>Lorem ipsum dolor sit amet consectetur. Velit<br> interdum tellus elit diam amet eleifend
-                        <br>suspendisse.
+                    <p>The Coffee Farmers Bridge MIS is a digital platform designed to connect coffee farmers directly to buyers, eliminating middlemen and ensuring fair prices. 
+                        It provides farmers with tools for tracking their harvests, managing finances, and accessing market information. By leveraging technology, the platform aims to empower farmers, enhance transparency in the coffee supply chain, and promote sustainable practices.
                     </p>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     <div>
                         <h5 class="fw-700 dark-gray mb-24">About Us</h5>
                         <ul>
-                            <li class="text-16 mb-12"> <a href="{{ route('home') }}">Find a Location</a></li>
+                            <li class="text-16 mb-12"> <a href="{{ route('home') }}">Contact us</a></li>
                             <li class="text-16 mb-12"><a href="{{ route('home') }}">About Us</a></li>
                             <li class="text-16 mb-0"> <a href="{{ route('login') }}">Login</a></li>
                         </ul>
@@ -75,8 +75,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <a href="mailto:exampleinfo@gmail.com"
-                                    class="color-ter">exampleinfo@gmail.com</a>
+                                <a href="mailto:coffebridge@gmail.com"
+                                    class="color-ter">coffebridge@gmail.com</a>
                             </div>
                         </div>
                         <h6 class="fw-700 dark-gray mb-16">Follow Us!</h6>

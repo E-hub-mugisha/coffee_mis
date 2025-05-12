@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Coffee Shop">
 
-    <title>@yield('title') </title>
+    <title>Coffee Bridge</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front-pages/assets/media/favicon.png') }}">
@@ -63,18 +63,6 @@
         </div>
     </div>
     <!-- Mobile Menu End -->
-
-    <!-- modal-popup area end  -->
-    <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <div class="search-popup__content">
-            <form role="search" method="get" class="search-popup__form" action="https://uiparadox.co.uk/templates/sip-savor/index.html">
-                <input type="text" id="search" placeholder="Search Here...">
-                <button type="submit"><i class="fal fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-    <!-- search-popup -->
 
 
     <!-- Jquery Js -->
