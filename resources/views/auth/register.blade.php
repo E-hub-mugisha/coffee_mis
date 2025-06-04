@@ -22,7 +22,7 @@
             <select id="role" class="block mt-1 w-full" name="role" required>
                 <option value="admin">admin</option>
                 <option value="cooperative">cooperative</option>
-                <option value="user">user</option>
+                <option value="buyer">buyer</option>
             </select>
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
