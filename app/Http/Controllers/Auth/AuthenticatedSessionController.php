@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         // Role-based redirection
         switch ($user->role) {
             case 'admin':
-                return redirect()->route('dashboard');
+                return redirect()->route('admin.dashboard');
 
             case 'cooperative':
                 return redirect()->route('cooperative.dashboard');

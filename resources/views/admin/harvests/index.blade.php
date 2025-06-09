@@ -39,7 +39,7 @@
                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editHarvestModal{{ $harvest->id }}">Edit</button>
 
                     <!-- Delete Harvest Form -->
-                    <form action="{{ route('harvests.destroy', $harvest->id) }}" method="POST" style="display:inline;">
+                    <form action="{{ route('admin.harvests.destroy', $harvest->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this harvest?')">Delete</button>
@@ -73,7 +73,7 @@
             <div class="modal fade" id="editHarvestModal{{ $harvest->id }}" tabindex="-1" aria-labelledby="editHarvestModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form method="POST" action="{{ route('harvests.update', $harvest->id) }}">
+                        <form method="POST" action="{{ route('admin.harvests.update', $harvest->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="modal-header">
@@ -143,7 +143,7 @@
 <div class="modal fade" id="addHarvestModal" tabindex="-1" aria-labelledby="addHarvestModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST" action="{{ route('harvests.store') }}">
+            <form method="POST" action="{{ route('admin.harvests.store') }}">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="addHarvestModalLabel">Add Harvest</h5>

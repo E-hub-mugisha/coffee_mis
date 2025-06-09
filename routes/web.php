@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
     // Farmers Routes
     Route::get('/admin/farmers', [FarmerController::class, 'index'])->name('admin.farmers.index');
@@ -81,13 +81,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
     // Harvests Routes
-    Route::get('/admin/harvests', [HarvestController::class, 'index'])->name('admin.harvests.index');
-    Route::get('/admin/harvests/create', [HarvestController::class, 'create'])->name('harvests.create');
-    Route::post('/admin/harvests', [HarvestController::class, 'store'])->name('harvests.store');
-    Route::get('/admin/harvests/{harvest}', [HarvestController::class, 'show'])->name('harvests.show');
-    Route::get('/admin/harvests/{harvest}/edit', [HarvestController::class, 'edit'])->name('harvests.edit');
-    Route::put('/admin/harvests/{harvest}', [HarvestController::class, 'update'])->name('harvests.update');
-    Route::delete('/admin/harvests/{harvest}', [HarvestController::class, 'destroy'])->name('harvests.destroy');
+    Route::get('/admin/harvests', [App\Http\Controllers\Admin\AdminHarvestController::class, 'index'])->name('admin.harvests.index');
+    Route::get('/admin/harvests/create', [App\Http\Controllers\Admin\AdminHarvestController::class, 'create'])->name('admin.harvests.create');
+    Route::post('/admin/harvests', [App\Http\Controllers\Admin\AdminHarvestController::class, 'store'])->name('admin.harvests.store');
+    Route::get('/admin/harvests/{harvest}', [App\Http\Controllers\Admin\AdminHarvestController::class, 'show'])->name('admin.harvests.show');
+    Route::get('/admin/harvests/{harvest}/edit', [App\Http\Controllers\Admin\AdminHarvestController::class, 'edit'])->name('admin.harvests.edit');
+    Route::put('/admin/harvests/{harvest}', [App\Http\Controllers\Admin\AdminHarvestController::class, 'update'])->name('admin.harvests.update');
+    Route::delete('/admin/harvests/{harvest}', [App\Http\Controllers\Admin\AdminHarvestController::class, 'destroy'])->name('admin.harvests.destroy');
 
 
     // Farms Routes

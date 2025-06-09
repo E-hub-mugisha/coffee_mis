@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cooperative;
 use App\Models\Farm;
-use App\Models\Harvest;
 use App\Models\Farmer;
+use App\Models\Harvest;
 use Illuminate\Http\Request;
 
-class HarvestController extends Controller
+class AdminHarvestController extends Controller
 {
     public function index()
     {
