@@ -3,8 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CoffeeProduct;
+use App\Models\CoffeeTip;
 use Illuminate\Http\Request;
 use App\Models\Cooperative;
+use App\Models\CooperativeFeedback;
+use App\Models\UserFeedback;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminCooperativeController extends Controller
 {

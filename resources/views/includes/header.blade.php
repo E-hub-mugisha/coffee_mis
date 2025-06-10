@@ -31,14 +31,32 @@
                         <a href="{{ route('dashboard') }}" class="cus-btn">
                             <span class="text">Admin Dashboard</span>
                         </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="cus-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </form>
                         @elseif (Auth::user()->role === 'cooperative')
                         <a href="{{ route('cooperative.dashboard') }}" class="cus-btn">
                             <span class="text">Dashboard</span>
                         </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="cus-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </form>
                         @elseif (Auth::user()->role === 'buyer')
                         <a href="{{ route('coffee.buyer.dashboard') }}" class="cus-btn">
                             <span class="text">Dashboard</span>
                         </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="cus-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </form>
                         @endif
                         @else
                         <a href="{{ route('login') }}" class="cus-btn">
